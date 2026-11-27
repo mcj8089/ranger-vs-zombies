@@ -1,0 +1,122 @@
+/**
+ * 关卡 / 时间轴配置
+ * ------------------------------------------------------------------
+ * 一局 = 三个章节，共 180 秒。章节决定：背景色板、滚速、刷怪池、刷怪节奏。
+ * 第三章 10 秒后 BOSS 从右侧进场；BOSS 死亡即胜利（不再看倒计时）。
+ */
+
+export const STAGES = [
+  {
+    id: 1,
+    nameKey: 'stage.1.name',
+    subKey: 'stage.1.sub',
+    from: 0,
+    to: 55,
+    palette: 'day',
+    scrollSpeed: [360, 430],
+    spawn: { interval: [2.15, 1.45], ground: ['walker', 'cone'], air: ['f_bucket'], airChance: 0.18 },
+    props: ['cactus', 'rock', 'bush'],
+    mechanic: { type: 'tumbleweed', first: 6, interval: [12, 17], max: 2, toastKey: 'stage.1.mod' },
+    music: 'run',
+    banner: true,
+  },
+  {
+    id: 2,
+    nameKey: 'stage.2.name',
+    subKey: 'stage.2.sub',
+    from: 55,
+    to: 112,
+    palette: 'dusk',
+    scrollSpeed: [430, 500],
+    spawn: {
+      interval: [1.55, 1.02],
+      ground: ['walker', 'cone', 'barrel', 'crawler', 'cowgirl'],
+      air: ['f_bucket', 'f_cone', 'f_cowgirl'],
+      airChance: 0.30,
+    },
+    props: ['pillar', 'rock', 'cactus', 'ladder'],
+    mechanic: { type: 'keg', first: 7, interval: [12, 17], max: 2, toastKey: 'stage.2.mod' },
+    music: 'run',
+    banner: true,
+  },
+  {
+    id: 3,
+    nameKey: 'stage.3.name',
+    subKey: 'stage.3.sub',
+    from: 112,
+    to: 180,
+    palette: 'night',
+    scrollSpeed: [500, 560],
+    spawn: {
+      interval: [1.25, 0.78],
+      ground: ['walker', 'cone', 'barrel', 'brute', 'cowgirl', 'crawler'],
+      air: ['f_bucket', 'f_cone', 'f_cowgirl', 'f_crawler', 'f_brute'],
+      airChance: 0.36,
+    },
+    props: ['pillar', 'rock', 'bush', 'ladder'],
+    mechanic: { type: 'totem', first: 6, interval: [16, 21], max: 2, toastKey: 'stage.3.mod' },
+    music: 'run',
+    banner: true,
+    bossAt: 22,
+  },
+];
+
+/** 背景色板（章节之间渐变过渡） */
+export const PALETTES = {
+  day: {
+    skyTop: '#79c9ec',
+    skyBottom: '#ffe6b8',
+    sun: '#fff7d2',
+    sunGlow: 'rgba(255, 240, 180, 0.85)',
+    sunX: 0.74,
+    sunY: 0.18,
+    sunR: 150,
+    wash: 'rgba(255, 196, 120, 0.10)',
+    haze: 'rgba(255, 226, 172, 0.42)',
+    farTint: 'rgba(255, 205, 150, 0.06)',
+    groundLight: '#f6c477',
+    groundDark: '#a25f26',
+    fg: 'rgba(92, 52, 20, 0.92)',
+    cloudAlpha: 0.92,
+    starAlpha: 0,
+    ambient: '#ffe4b0',
+  },
+  dusk: {
+    skyTop: '#e06f62',
+    skyBottom: '#ffcf9a',
+    sun: '#ffd36e',
+    sunGlow: 'rgba(255, 150, 80, 0.75)',
+    sunX: 0.62,
+    sunY: 0.42,
+    sunR: 190,
+    wash: 'rgba(255, 118, 62, 0.20)',
+    haze: 'rgba(255, 176, 120, 0.48)',
+    farTint: 'rgba(180, 74, 60, 0.16)',
+    groundLight: '#e7a05c',
+    groundDark: '#7d3f22',
+    fg: 'rgba(70, 34, 26, 0.94)',
+    cloudAlpha: 0.8,
+    starAlpha: 0.15,
+    ambient: '#ffc98a',
+  },
+  night: {
+    skyTop: '#1b2a52',
+    skyBottom: '#5f5a83',
+    sun: '#eaf4ff',
+    sunGlow: 'rgba(180, 210, 255, 0.55)',
+    sunX: 0.7,
+    sunY: 0.22,
+    sunR: 104,
+    wash: 'rgba(34, 44, 96, 0.42)',
+    haze: 'rgba(96, 110, 160, 0.42)',
+    farTint: 'rgba(24, 34, 74, 0.34)',
+    groundLight: '#a68a76',
+    groundDark: '#4a3a3c',
+    fg: 'rgba(20, 20, 34, 0.96)',
+    cloudAlpha: 0.28,
+    starAlpha: 0.9,
+    ambient: '#9fb6e8',
+  },
+};
+
+export default { STAGES, PALETTES };

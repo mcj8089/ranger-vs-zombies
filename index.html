@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#3a2412">
+<title>Ranger vs Zombies — Desert Shotgun Run</title>
+<meta name="description" content="Aim the shotgun from sky to ground, loot special-ammo chests and blast cursed zombies. A hand-painted desert run-and-gun for desktop and mobile.">
+<meta name="keywords" content="ranger vs zombies, zombie shooter, mouse aiming, special ammo, html5 game, free online game, desert game, cowboy zombie game">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pipygames.com">
+<meta property="og:title" content="Ranger vs Zombies — Desert Shotgun Run">
+<meta property="og:description" content="One ranger. Three minutes. Aim from sky to ground, crack open special-ammo chests, jump the shockwaves and survive the Crowned Brute.">
+<meta property="og:image" content="https://pipygames.com/assets/images/cover.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:url" content="https://pipygames.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ranger vs Zombies — Desert Shotgun Run">
+<meta name="twitter:description" content="Point the reticle, grab a chest of blast shells, and hold the desert for three minutes. Can you outlast the Crowned Brute?">
+<meta name="twitter:image" content="https://pipygames.com/assets/images/cover.png">
+
+<link rel="icon" type="image/png" href="assets/images/hero_0.png">
+<link rel="apple-touch-icon" href="assets/images/hud_ranger.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="src/sdk/sdk-styles.css">
+</head>
+<body>
+
+<div id="stage">
+  <canvas id="game" width="1920" height="1080"></canvas>
+  <div id="ui"></div>
+</div>
+
+<!-- 开屏：站点 + 健康忠告 + 品牌 + 进度（静态结构，JS 未就绪也可立即显示） -->
+<div id="bootSplash" class="boot">
+  <div class="boot-bg"></div>
+  <div class="boot-rays"></div>
+  <div class="boot-inner">
+    <div class="splash-url">pipygames.com</div>
+    <img class="boot-logo" src="assets/images/logo.png" alt="Ranger vs Zombies">
+    <p class="splash-health">Health reminder: take a 5-minute break every hour. Play in a well-lit room and keep a comfortable distance from the screen.</p>
+    <div class="loadwrap">
+      <div class="loadbar">
+        <div class="loadfill"></div>
+        <div class="loadshine"></div>
+        <img class="load-runner" src="assets/images/hero_0.png" alt="">
+      </div>
+      <div class="loadmeta">
+        <span class="loadlabel-text">Loading</span>
+        <span class="loadpct">0%</span>
+      </div>
+      <div class="boot-tip">Tip: the ranger shoots where you point — aim with the mouse, or let him auto-target.</div>
+    </div>
+  </div>
+  <div class="boot-chase" aria-hidden="true">
+    <img src="assets/images/flyer_bucket.png" alt="">
+    <img src="assets/images/zombie_cone.png" alt="">
+    <img src="assets/images/zombie_cowgirl.png" alt="">
+    <img src="assets/images/zombie_brute.png" alt="">
+  </div>
+  <div class="boot-foot">© pipygames.com · All art and audio created for this project</div>
+</div>
+
+<div id="domainLock" class="domain-lock hidden">
+  <div class="domain-card">
+    <div class="domain-title"></div>
+    <div class="domain-count"></div>
+  </div>
+</div>
+
+<script src="src/sdk/sdk.config.js"></script>
+<script src="src/sdk/gamesdk.js"></script>
+<script>
+  // 存档模块在 ES Module 加载阶段就会读取校验基线，必须先把 SDK 配置合并好
+  window.GameSDK.init();
+</script>
+
+<script type="importmap">
+{
+  "imports": {
+    "@game/": "./src/"
+  }
+}
+</script>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

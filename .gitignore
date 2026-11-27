@@ -1,0 +1,20 @@
+# 开发过程产物 / 构建产物（不参与分发）
+.analysis/
+.art/
+tools/
+docs/
+dist/
+marketing/
+raw/
+sdk/
+media/
+node_modules/
+__pycache__/
+.cache/
+tests/
+*.gif
+*.bat
+SEO.txt
+SEO.TXT
+Thumbs.db
+.DS_Store
